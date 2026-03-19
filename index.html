@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Web - Gestion de projet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,118 +13,134 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #fff;
+            font-family: 'Inter', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 40px 20px;
+            padding: 80px 20px 60px;
             text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
         }
 
         header p {
-            font-size: 1.1em;
-            color: #aaa;
+            font-size: 1.05em;
+            font-weight: 300;
+            color: #888;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
         main {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 720px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            flex: 1;
         }
 
         section {
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        section:hover {
-            transform: translateY(-3px);
+            margin-bottom: 48px;
         }
 
         section h2 {
-            font-size: 1.6em;
-            margin-bottom: 15px;
-            color: #667eea;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #aaa;
+            margin-bottom: 20px;
         }
 
-        section p {
+        .intro p {
+            font-size: 1.1em;
             line-height: 1.8;
-            color: #ccc;
-            font-size: 1.05em;
+            color: #555;
+            font-weight: 300;
         }
 
         .equipe ul {
             list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .equipe li {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 18px 24px;
-            border-radius: 12px;
-            font-size: 1.2em;
-            font-weight: 600;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 1em;
+            font-weight: 400;
+            color: #333;
+            transition: all 0.2s ease;
         }
 
         .equipe li:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: #1a1a1a;
+            color: #fff;
+            border-color: #1a1a1a;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: #ddd;
+            margin: 48px 0;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            color: #666;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 40px;
+            padding: 40px 20px;
+            font-size: 0.85em;
+            color: #bbb;
+            font-weight: 300;
         }
 
         @media (max-width: 600px) {
+            header {
+                padding: 50px 20px 40px;
+            }
             header h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
             .equipe ul {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+            .equipe li {
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Mini-Projet : Gestion de Projet</h1>
-        <p>Projet réalisé dans le cadre du module de Gestion de Projet (Licence Informatique 2A).</p>
+        <h1>Gestion de Projet</h1>
+        <p>Projet realise dans le cadre du module de Gestion de Projet, Licence Informatique 2A.</p>
     </header>
 
     <main>
         <section class="intro">
-            <h2>Bienvenue sur notre site</h2>
-            <p>Ce site a été créé pour mettre en pratique nos compétences avec Git et GitHub. Nous utilisons des branches, des pull requests et des tags pour collaborer efficacement.</p>
+            <h2>A propos</h2>
+            <p>Ce site a ete cree pour mettre en pratique nos competences avec Git et GitHub. Nous utilisons des branches, des pull requests et des tags pour collaborer efficacement.</p>
         </section>
 
+        <div class="divider"></div>
+
         <section class="equipe">
-            <h2>Notre équipe</h2>
+            <h2>Equipe</h2>
             <ul>
                 <li>Oleksii</li>
                 <li>Damir</li>
@@ -134,7 +151,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 - Université de Lyon 2</p>
+        <p>&copy; 2026 Universite de Lyon 2</p>
     </footer>
 </body>
 </html>
