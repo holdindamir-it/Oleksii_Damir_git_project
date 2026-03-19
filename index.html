@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Web - Gestion de projet</title>
     <style>
+        :root {
+            --bg: #fff;
+            --text: #222;
+            --text-light: #777;
+            --text-mid: #555;
+            --card-bg: #f5f5f5;
+            --card-hover: #222;
+            --card-hover-text: #fff;
+            --border: #eee;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --label: #999;
+            --footer: #ccc;
+            --avatar-bg: #e8e5ff;
+            --avatar-text: #6366f1;
+        }
+
+        [data-theme="dark"] {
+            --bg: #111;
+            --text: #eee;
+            --text-light: #888;
+            --text-mid: #aaa;
+            --card-bg: #1e1e1e;
+            --card-hover: #6366f1;
+            --card-hover-text: #fff;
+            --border: #2a2a2a;
+            --label: #666;
+            --footer: #444;
+            --avatar-bg: #2a2552;
+            --avatar-text: #818cf8;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,17 +45,47 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #fff;
-            color: #222;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .accent-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), #a78bfa);
         }
 
         .container {
             max-width: 640px;
             margin: 0 auto;
-            padding: 80px 24px;
+            padding: 60px 24px;
         }
 
+        /* Theme toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            cursor: pointer;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Header */
         header {
             margin-bottom: 56px;
         }
@@ -34,12 +96,20 @@
             margin-bottom: 12px;
         }
 
+        header h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         header p {
             font-size: 1em;
-            color: #777;
+            color: var(--text-light);
             line-height: 1.7;
         }
 
+        /* Sections */
         section {
             margin-bottom: 48px;
         }
@@ -49,49 +119,112 @@
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #999;
+            color: var(--label);
             margin-bottom: 14px;
         }
 
         .intro p {
             font-size: 1em;
             line-height: 1.8;
-            color: #555;
+            color: var(--text-mid);
         }
 
         hr {
             border: none;
             height: 1px;
-            background: #eee;
+            background: var(--border);
             margin: 48px 0;
         }
 
+        /* Team cards */
         .equipe ul {
             list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
         }
 
         .equipe li {
-            background: #f5f5f5;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 0.95em;
-            font-weight: 500;
-            color: #333;
-            transition: background 0.2s, color 0.2s;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s;
         }
 
         .equipe li:hover {
-            background: #222;
+            background: var(--card-hover);
+            color: var(--card-hover-text);
+            transform: translateY(-2px);
+        }
+
+        .equipe li:hover .avatar {
+            background: rgba(255, 255, 255, 0.2);
             color: #fff;
         }
 
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--avatar-bg);
+            color: var(--avatar-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9em;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .name {
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        /* Footer */
         footer {
             padding: 48px 0 0;
             font-size: 0.8em;
-            color: #ccc;
+            color: var(--footer);
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .fade-up:nth-child(1) { animation-delay: 0.1s; }
+        .fade-up:nth-child(2) { animation-delay: 0.2s; }
+        .fade-up:nth-child(3) { animation-delay: 0.3s; }
+        .fade-up:nth-child(4) { animation-delay: 0.4s; }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .fade-in-delay {
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.3s forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
         @media (max-width: 480px) {
@@ -101,38 +234,80 @@
             header h1 {
                 font-size: 1.8em;
             }
+            .equipe ul {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="accent-bar"></div>
+
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span id="theme-icon">&#9790;</span>
+    </button>
+
     <div class="container">
-        <header>
-            <h1>Gestion de Projet</h1>
+        <header class="fade-in">
+            <h1>Gestion <span>de Projet</span></h1>
             <p>Projet realise dans le cadre du module de Gestion de Projet, Licence Informatique 2A.</p>
         </header>
 
         <main>
-            <section class="intro">
+            <section class="intro fade-in-delay">
                 <h2>A propos</h2>
                 <p>Ce site a ete cree pour mettre en pratique nos competences avec Git et GitHub. Nous utilisons des branches, des pull requests et des tags pour collaborer efficacement.</p>
             </section>
 
-            <hr>
+            <hr class="fade-in-delay">
 
             <section class="equipe">
-                <h2>Equipe</h2>
+                <h2 class="fade-in-delay">Equipe</h2>
                 <ul>
-                    <li>Oleksii</li>
-                    <li>Damir</li>
-                    <li>Vladyslav</li>
-                    <li>Ilia</li>
+                    <li class="fade-up">
+                        <div class="avatar">OL</div>
+                        <span class="name">Oleksii</span>
+                    </li>
+                    <li class="fade-up">
+                        <div class="avatar">DA</div>
+                        <span class="name">Damir</span>
+                    </li>
+                    <li class="fade-up">
+                        <div class="avatar">VL</div>
+                        <span class="name">Vladyslav</span>
+                    </li>
+                    <li class="fade-up">
+                        <div class="avatar">IL</div>
+                        <span class="name">Ilia</span>
+                    </li>
                 </ul>
             </section>
         </main>
 
-        <footer>
+        <footer class="fade-in-delay">
             <p>&copy; 2026 Universite de Lyon 2</p>
         </footer>
     </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                icon.innerHTML = '&#9790;';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('theme-icon').innerHTML = '&#9728;';
+        }
+    </script>
 </body>
 </html>
