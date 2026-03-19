@@ -1,0 +1,174 @@
+\documentclass[12pt,a4paper]{article}
+
+% ==========================================
+% PACKAGES
+% ==========================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\geometry{margin=2.5cm}
+
+% ==========================================
+% STYLE
+% ==========================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    urlcolor=blue!70!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Mini-Projet : Gestion de Projet}
+\fancyhead[R]{\small Licence Informatique 2A}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\section}{\Large\bfseries\color{blue!70!black}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries}{}{0em}{}
+
+% ==========================================
+% PAGE DE GARDE
+% ==========================================
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+
+    {\Huge\bfseries Mini-Projet :\\[0.3cm] Gestion de Projet avec Git \& GitHub\par}
+
+    \vspace{1.5cm}
+
+    {\Large Licence Informatique 2\textsuperscript{e} annee\par}
+    {\large Universite de Lyon 2\par}
+
+    \vspace{2cm}
+
+    {\large\bfseries Equipe :\par}
+    \vspace{0.5cm}
+    {\Large
+        Oleksii \quad $\bullet$ \quad
+        Damir \quad $\bullet$ \quad
+        Vladyslav \quad $\bullet$ \quad
+        Ilia\par
+    }
+
+    \vspace{2cm}
+
+    {\large Annee universitaire 2025--2026\par}
+
+    \vfill
+\end{titlepage}
+
+% ==========================================
+% TABLE DES MATIERES
+% ==========================================
+\tableofcontents
+\newpage
+
+% ==========================================
+% SECTION 1 : INTRODUCTION
+% ==========================================
+\section{Introduction}
+
+Dans le cadre du module de Gestion de Projet en Licence Informatique 2\textsuperscript{e} annee, nous avons realise un mini-projet collaboratif visant a mettre en pratique les outils et methodes de versionnement. L'objectif principal etait de creer un site web simple tout en utilisant \textbf{Git} et \textbf{GitHub} pour gerer efficacement notre travail en equipe.
+
+Ce rapport presente notre demarche, les etapes cles de notre collaboration, ainsi que les enseignements tires de cette experience.
+
+\newpage
+
+% ==========================================
+% SECTION 2 : DEROULEMENT DU PROJET
+% ==========================================
+\section{Deroulement du projet}
+
+% A3
+\subsection*{[A3] Participation active de chaque membre}
+
+Chaque membre de l'equipe a contribue activement au projet en effectuant des commits reguliers. L'historique Git atteste de la participation de tous les etudiants tout au long du developpement.
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{image_A3.png}
+    \caption{Historique des commits confirmant la participation active de chaque etudiant.}
+\end{figure}
+
+\newpage
+
+% B1
+\subsection*{[B1] Gestion par branches}
+
+Pour eviter d'ecraser le travail des autres membres, nous avons adopte une strategie de developpement basee sur les branches. Au lieu de travailler directement sur la branche principale, nous avons cree des branches specifiques pour chaque fonctionnalite :
+
+\begin{itemize}[leftmargin=2cm]
+    \item \texttt{vlad-content} -- ajout du contenu HTML et du design CSS
+    \item \texttt{feature-css} -- mise en forme et style du site
+    \item \texttt{feature-html} -- structure et contenu des pages
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{image_B1.png}
+    \caption{Liste des branches actives utilisees pour separer les axes de developpement.}
+\end{figure}
+
+\newpage
+
+% B3
+\subsection*{[B3] Gestion des propositions de contributions}
+
+L'integration du code issu des branches secondaires vers la branche \texttt{main} s'est faite exclusivement via des \textbf{Pull Requests} (PR). Cette methode nous a permis de :
+
+\begin{itemize}[leftmargin=2cm]
+    \item Relire le code (\textit{Code Review})
+    \item Discuter des modifications via les commentaires
+    \item Valider les changements collectivement avant la fusion definitive
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{image_B3.png}
+    \caption{Apercu d'une Pull Request incluant nos echanges et la validation du code.}
+\end{figure}
+
+\newpage
+
+% B2
+\subsection*{[B2] Integration de version et tag}
+
+Une fois que toutes nos branches (HTML, CSS et README) ont ete fusionnees avec succes, nous avons fige l'etat du projet. Pour marquer cette etape importante, nous avons utilise la commande \texttt{git tag} pour creer la version \texttt{v1.0}, representant la premiere version fonctionnelle et stable de notre site.
+
+\begin{verbatim}
+    git tag -a v1.0 -m "Premiere version stable du site"
+    git push origin v1.0
+\end{verbatim}
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{image_B2.png}
+    \caption{Creation et affichage du tag v1.0 dans l'interface des releases GitHub.}
+\end{figure}
+
+\newpage
+
+% ==========================================
+% SECTION 3 : CONCLUSION
+% ==========================================
+\section{Conclusion}
+
+Ce mini-projet s'est revele extremement formateur. Il nous a permis de faire le lien entre la theorie abordee en seance et la pratique indispensable a tout developpeur. L'utilisation de Git en ligne de commande, couplee a l'interface visuelle de GitHub, a grandement facilite notre synchronisation.
+
+La mise en place des branches a ete le point le plus benefique, car elle a prevenu les conflits de fusion qui auraient pu bloquer notre avancement. Bien que nous ayons rencontre quelques hesitations initiales lors de la creation de nos premieres Pull Requests, la collaboration et les revues de code nous ont permis de surmonter ces difficultes rapidement.
+
+Au final, nous disposons d'un flux de travail solide que nous pourrons reutiliser dans nos futurs projets universitaires ou professionnels.
+
+\end{document}
