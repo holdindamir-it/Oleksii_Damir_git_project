@@ -16,22 +16,22 @@
             background: #fff;
             color: #222;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 80px 24px;
         }
 
         header {
-            width: 100%;
-            max-width: 640px;
-            padding: 80px 24px 48px;
-            text-align: center;
+            margin-bottom: 56px;
         }
 
         header h1 {
-            font-size: 2.2em;
+            font-size: 2.4em;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         header p {
@@ -40,25 +40,17 @@
             line-height: 1.7;
         }
 
-        main {
-            width: 100%;
-            max-width: 640px;
-            padding: 0 24px;
-            flex: 1;
-        }
-
         section {
-            margin-bottom: 40px;
-            text-align: center;
+            margin-bottom: 48px;
         }
 
         section h2 {
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #999;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .intro p {
@@ -71,14 +63,12 @@
             border: none;
             height: 1px;
             background: #eee;
-            margin: 40px auto;
-            width: 60px;
+            margin: 48px 0;
         }
 
         .equipe ul {
             list-style: none;
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
         }
@@ -99,50 +89,50 @@
         }
 
         footer {
-            width: 100%;
-            text-align: center;
-            padding: 48px 24px;
+            padding: 48px 0 0;
             font-size: 0.8em;
             color: #ccc;
         }
 
         @media (max-width: 480px) {
-            header {
-                padding: 48px 20px 32px;
+            .container {
+                padding: 48px 20px;
             }
             header h1 {
-                font-size: 1.6em;
+                font-size: 1.8em;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Gestion de Projet</h1>
-        <p>Projet realise dans le cadre du module de Gestion de Projet, Licence Informatique 2A.</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Gestion de Projet</h1>
+            <p>Projet realise dans le cadre du module de Gestion de Projet, Licence Informatique 2A.</p>
+        </header>
 
-    <main>
-        <section class="intro">
-            <h2>A propos</h2>
-            <p>Ce site a ete cree pour mettre en pratique nos competences avec Git et GitHub. Nous utilisons des branches, des pull requests et des tags pour collaborer efficacement.</p>
-        </section>
+        <main>
+            <section class="intro">
+                <h2>A propos</h2>
+                <p>Ce site a ete cree pour mettre en pratique nos competences avec Git et GitHub. Nous utilisons des branches, des pull requests et des tags pour collaborer efficacement.</p>
+            </section>
 
-        <hr>
+            <hr>
 
-        <section class="equipe">
-            <h2>Equipe</h2>
-            <ul>
-                <li>Oleksii</li>
-                <li>Damir</li>
-                <li>Vladyslav</li>
-                <li>Ilia</li>
-            </ul>
-        </section>
-    </main>
+            <section class="equipe">
+                <h2>Equipe</h2>
+                <ul>
+                    <li>Oleksii</li>
+                    <li>Damir</li>
+                    <li>Vladyslav</li>
+                    <li>Ilia</li>
+                </ul>
+            </section>
+        </main>
 
-    <footer>
-        <p>&copy; 2026 Universite de Lyon 2</p>
-    </footer>
+        <footer>
+            <p>&copy; 2026 Universite de Lyon 2</p>
+        </footer>
+    </div>
 </body>
 </html>
